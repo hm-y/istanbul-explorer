@@ -1,16 +1,16 @@
 // Script comes here
 
 // Toggle Navigation
-$(".openNav").click(function() {
-    $("body").toggleClass("navOpen");
+$(".navigator").click(function() {
     $("nav").toggleClass("open");
-    $(".wrapper").toggleClass("open");
+    $(".content").toggleClass("open");
     $(this).toggleClass("open");
 });
 
 var initMap = function() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 43.653226, lng: -79.383184},
-      zoom: 13
+      center: {lat: 41.005604, lng: 28.997002},
+      zoom: 12,
+      disableDefaultUI: true
     });
 }

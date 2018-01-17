@@ -2,27 +2,40 @@
 <html>
     <head>
         <title>Istanbul Explorer</title>
-        
+        <link rel="shortcut icon" type="image/x-icon" href="img/kk.png" />
+
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style/style.css">
     </head>
     <body>
         <!-- Navigation -->
         <nav>
+            <img src="img/ie.png" alt="Istanbul Explorer">
+            <div class="search">
+                <form>
+                <input type="text" name="new-place" value="Search a new place">
+                <input type="submit" value="Add">
+                </form>
+            </div>
+            <select>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
             <ul>
                 <li>Place 1</li>
                 <li>Place 2</li>
             </ul>
         </nav>
-        <div class="openNav">
-            <div class="icon"></div>
+
+        <div class="navigator">
+            <div class="nav-icon"></div>
         </div>
 
         <!-- Map -->
-        <div class="wrapper">
-          <section>
-              <div id="map" style="height: 400px;"></div>
-          </section>
+        <div class="content">
+            <div id="map"></div>
         </div>
 
         <!-- Link to libraries, APIs & my scripts -->
