@@ -90,19 +90,44 @@ nav {
 nav img {
   width: 400px;
   height: 50px;
-
 }
-nav .search {
-  background-color: blue;
+.search {
   width: 400px;
   height: 50px;
   vertical-align: top;
+  padding: 10px;
   float: right;
-  margin-right: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
-nav select {
-  width: 250px;
+
+.search * {
+    height: 30px;
+    margin-top: 0;
+}
+
+.search-input{
+    width: 50%;
+}
+
+.search select {
+    width: 30%;
+}
+
+#add {
+    background-color: #14B9FF;
+    color: white;
+}
+
+.filter {
+  width: 150px;
   display: block;
+  height: 2em;
+  margin: 25px 50px 25px 50px;
+}
+.filter option {
+    text-align: center;
 }
 nav ul {
   width: 250px;
@@ -113,10 +138,12 @@ nav ul:hover li {
 nav ul li {
   transition-duration: 0.25s;
   display: block;
-  padding: 5px 40px;
+  margin-top: 10px;
+  padding-left: 25px;
   color: white;
   letter-spacing: 0.02em;
-  text-align: right;
+  text-align: left;
+  border-bottom: 1px dashed;
 }
 nav ul li:hover {
   cursor: pointer;
@@ -140,4 +167,41 @@ nav ul li:hover {
 .content #map {
   height: 100%;
   margin: 0 auto;
+}
+
+@media (max-width: 850px) {
+    nav img {
+        display: block;
+        width: 300px;
+    }
+    .search {
+      width: 250px;
+      height: 100px;
+      float: none;
+      display: block;
+      position: relative;
+    }
+    .search-input {
+        height: 30px;
+        width: 100%;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .search select {
+        width: 120px;
+    }
+
+    #add {
+        float: right;
+    }
+
+    .search select, #add {
+        height: 30px;
+        display: inline-block;
+    }
+
+    .filter {
+      margin: 10px 50px 10px 50px;
+    }
 }

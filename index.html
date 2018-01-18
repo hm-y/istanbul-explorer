@@ -5,28 +5,45 @@
         <link rel="shortcut icon" type="image/x-icon" href="img/kk.png" />
 
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width; maximum-scale=1; minimum-scale=1;" />
         <link rel="stylesheet" type="text/css" href="style/style.css">
     </head>
     <body>
         <!-- Navigation -->
         <nav>
+            <!-- Banner -->
             <img src="img/ie.png" alt="Istanbul Explorer">
+
+            <!-- Search part -->
             <div class="search">
                 <form>
-                <input type="text" name="new-place" value="Search a new place">
-                <input type="submit" value="Add">
+                <input class="search-input" type="text" name="new-place" value="Search a new place">
+                <!-- Search DropDown Menu -->
+                <select>
+                    <option value="historical">Historical</option>
+                    <option value="museum">Museum</option>
+                    <option value="food">Food & Drink</option>
+                    <option value="food">Others</option>
+                </select>
+                <input id="add" type="submit" value="   Add   ">
                 </form>
             </div>
-            <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+            
+            <!-- Filter DropDown Menu -->
+            <select class="filter">
+                <option value="all">All categories</option>
+                <option value="historical">Historical</option>
+                <option value="museum">Museum</option>
+                <option value="food">Food & Drink</option>
+                <option value="food">Others</option>
+                <option value="food">My Favourites</option>
             </select>
             <ul>
                 <li>Place 1</li>
                 <li>Place 2</li>
             </ul>
+
+
         </nav>
 
         <div class="navigator">
