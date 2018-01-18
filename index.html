@@ -5,7 +5,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="img/kk.png" />
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width; maximum-scale=1; minimum-scale=1;" />
+        <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1" />
         <link rel="stylesheet" type="text/css" href="style/style.css">
     </head>
     <body>
@@ -22,25 +22,23 @@
                 <select>
                     <option value="historical">Historical</option>
                     <option value="museum">Museum</option>
-                    <option value="food">Food & Drink</option>
+                    <option value="food">Shopping</option>
                     <option value="food">Others</option>
                 </select>
                 <input id="add" type="submit" value="   Add   ">
                 </form>
             </div>
-            
+
             <!-- Filter DropDown Menu -->
             <select class="filter">
-                <option value="all">All categories</option>
-                <option value="historical">Historical</option>
-                <option value="museum">Museum</option>
-                <option value="food">Food & Drink</option>
-                <option value="food">Others</option>
-                <option value="food">My Favourites</option>
+                <option value="-1">All categories</option>
+                <option value="0">Historical</option>
+                <option value="1">Museum</option>
+                <option value="2">Shopping</option>
+                <option value="3">Others</option>
             </select>
-            <ul>
-                <li>Place 1</li>
-                <li>Place 2</li>
+            <ul data-bind="foreach: listing()">
+                <li data-bind="text: name">Place Name</li>
             </ul>
 
 
@@ -59,6 +57,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoVd2-6JMxPX2yUHVIfIkc8z-19bdm9YY&callback=initMap">
         </script>

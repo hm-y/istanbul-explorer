@@ -130,7 +130,9 @@ nav img {
     text-align: center;
 }
 nav ul {
+    height: 100%;
   width: 250px;
+  overflow: auto;
 }
 nav ul:hover li {
   color: rgba(255, 255, 255, 0.5);
