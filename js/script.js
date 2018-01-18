@@ -32,25 +32,18 @@ var listing = ko.computed(function(){
 
 $('.filter').change(function() {
     filter(this.value);
+    map = new initMap();
 });
 
 
 var addPlace = function(name, lat, lng, cat) {
-    places.push({id: newID, name: name, location: {lat: lat, lng: lng}, category: cat});
-    //this.addMarker(data.places()[data.newID]);
+    var newOne = {id: newID, name: name, location: {lat: lat, lng: lng}, category: cat};
+    places.push(newOne);
+    addMarkerList(newOne);
+    putNewMarker();
     newID++;
 };
 
-/*
-
-    addMarker: function(place){
-    var marker = new google.maps.Marker({
-      position: place.location,
-      map: map,
-      title: place.title
-    });
-    }
-    */
 ko.applyBindings(listing());
 
 // ----- View ----- //
@@ -64,6 +57,8 @@ $(".navigator").click(function() {
 
 
 // ----- View: Google Maps ----- //
+var map;
+var markers = [];
 var styles = [
     {
         "featureType": "administrative",
@@ -258,9 +253,35 @@ var styles = [
 
 var initMap = function() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 41.005604, lng: 28.997002},
-      zoom: 12,
-      styles: styles,
-      disableDefaultUI: true
+        center: {lat: 41.025604, lng: 28.997002},
+        zoom: 13,
+        styles: styles,
+        disableDefaultUI: true
     });
+
+    ko.utils.arrayForEach(listing(), function(place){
+        addMarkerList(place);
+    });
+
+    putMarkers();
+
+};
+
+var addMarkerList = function(place){
+    var marker = {
+        map: map,
+        position: place.location,
+        title: place.title
+    };
+    markers.push(marker);
+};
+
+var putMarkers = function(){
+    $.each(markers, function(index, marker){
+        new google.maps.Marker(marker);
+    });
+};
+
+var putNewMarker = function(){
+    new google.maps.Marker(markers[newID]);
 }
