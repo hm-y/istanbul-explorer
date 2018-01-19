@@ -71,6 +71,10 @@ $(".navigator").click(function() {
     $(this).toggleClass("open");
 });
 
+var mapfail = function(){
+    $(".content").html("<h1>Ooops! <br/> Google Maps couldn't be loaded.</h1>");
+}
+
 
 // ----- View: Google Maps ----- //
 var map;
@@ -343,6 +347,14 @@ var openWindow = function(marker, markerData){
     }).done(function(){
         var html = "<h3>" + markerData.name + "</h3>"
             + "<img src=\"" + photo_src() + "\">";
+
+        infoWin = new google.maps.InfoWindow({
+            content: html
+        });
+        infoWin.open(map, marker);
+    }).fail(function(){
+        var html = "<h3>" + markerData.name + "</h3>"
+            + "<p>Sorry, The image couldn't be loaded.</p>";
 
         infoWin = new google.maps.InfoWindow({
             content: html
