@@ -1,4 +1,5 @@
 // ----- Data ----- //
+
 // Category indexes: 0 - Historical 1- Museum 2- Shopping  3- Others
 var places = ko.observableArray([
     {id:0, name: "Gülhane Park", location: {lat: 41.015268, lng: 28.981133},
@@ -17,38 +18,48 @@ var places = ko.observableArray([
         venue: "4b824a4bf964a5202dcf30e3" ,  category: 1},
     {id:7, name: "Maiden's Tower", location: {lat: 41.022044, lng: 29.004239},
         venue: "4bc599f96a3e9c74d407f648" ,  category: 3},
-    {id:8, name: "Büyük Çamlıca Tepesi", location: {lat: 41.030155, lng: 29.068368},
+    {id:8, name: "Big Çamlıca Hill", location: {lat: 41.030155, lng: 29.068368},
         venue: "4ce0dd7adb1254818cf33ece" ,  category: 3}
 ]);
-var photo_src = ko.observable("");
-// ----- Controller ----- //
-var filter = ko.observable(-1);
-var listing = ko.computed(function(){
-    if(filter() == -1)
-        return places();
 
-    else{
+var photo_src = ko.observable(""); //Foursquare pic src holder
+var filter = ko.observable(-1); // Default filter value
+
+
+
+// ----- Controller ----- //
+
+// listing holds the filtered data
+var listing = ko.computed(function(){
+    if(filter() == -1){
+        return places();
+    } else {
         return ko.utils.arrayFilter(places(), function(place){
             return place.category == filter();
         });
     }
 });
 
-$('.filter').change(function() {
+// dropdown filter menu listener
+$(".filter").change(function() {
     filter(this.value);
     map = new initMap();
 });
 
+// when a place is selected, show info
 var see = function (data, event){
     openWindow(markers[event.target.id], data);
 };
 
-$('button').click(function() {
+// filter buttons' listener
+$("button").click(function() {
     filter(this.value);
     map = new initMap();
 });
 
 ko.applyBindings(listing());
+
+
 
 
 // ----- View ----- //
@@ -66,6 +77,8 @@ var map;
 var icon;
 var markers = [];
 var prevWin, infoWin;
+
+// Maps style
 var styles = [
     {
         "featureType": "administrative",
@@ -258,10 +271,11 @@ var styles = [
     }
 ];
 
+// Initilize map with selected markers
 var initMap = function() {
-    map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: 41.025604, lng: 28.997002},
-        zoom: 12,
+        zoom: 13,
         styles: styles,
         disableDefaultUI: true
     });
@@ -271,6 +285,7 @@ var initMap = function() {
     });
 };
 
+// Add given markers to the map
 var addMarkerList = function(place){
     switch (place.category) {
         case 0:
@@ -285,7 +300,8 @@ var addMarkerList = function(place){
         case 3:
             icon = "img/moth.png";
             break;
-    }
+    };
+
     var markerData = {
         map: map,
         icon: icon,
@@ -293,10 +309,10 @@ var addMarkerList = function(place){
         position: place.location,
         name: place.name
     };
+
     var marker = new google.maps.Marker(markerData);
 
     marker.addListener("click", function() {
-
         openWindow(marker, markerData);
     });
 
@@ -305,18 +321,21 @@ var addMarkerList = function(place){
 
 // ----- InfoWindow with Ajax: FourSquare ----- //
 var openWindow = function(marker, markerData){
-    var address = "https://api.foursquare.com/v2/venues/" + markerData.venue
-        + "/photos?&client_id=KW4TUJ5L2ZFWAZXD20ZFOEJKD5RTLNXVGALY0S03HVO13LZI"
-        + "&client_secret=HA10R3RBCU4ODXIXNUWMAC45EOON4MYGR0C5XDJMKZHX3AIF&v=20180119";
 
+    // Close old InfoWindow when new selected
     if(infoWin)
         prevWin = infoWin;
     if (prevWin)
         prevWin.close();
 
+    // Retrieve data from FourSquare and create InfoWindow
+    var address = "https://api.foursquare.com/v2/venues/" + markerData.venue
+        + "/photos?&client_id=KW4TUJ5L2ZFWAZXD20ZFOEJKD5RTLNXVGALY0S03HVO13LZI"
+        + "&client_secret=HA10R3RBCU4ODXIXNUWMAC45EOON4MYGR0C5XDJMKZHX3AIF&v=20180119";
+
     $.ajax({
         url: address,
-        dataType: 'json',
+        dataType: "json",
         success: function(data){
             var photo = data.response.photos.items[0];
             photo_src(photo.prefix + "200x200" + photo.suffix);
@@ -330,5 +349,4 @@ var openWindow = function(marker, markerData){
         });
         infoWin.open(map, marker);
     });
-
 };

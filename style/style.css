@@ -1,4 +1,5 @@
-/* All elements & The body*/
+/* All elements & The body */
+
 * {
   padding: 0;
   margin: 0;
@@ -9,29 +10,28 @@ body {
   height: 100%;
   overflow: hidden;
   width: 100%;
-  height: 100%;
   position: fixed;
-  left: 0;
-  top: 0;
 }
 
 /* Navigation */
 
-/* Navigator */
+/* Navigator (Hamburger) */
+
 .navigator {
   transition-duration: 0.5s;
-  transition-timing-function: swing;
   width: 50px;
   height: 50px;
-  background-color: #C70039;
+  background-color: #c70039;
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 9;
 }
+
 .navigator:hover {
   cursor: pointer;
 }
+
 .navigator .nav-icon {
   transition-duration: 0.2s;
   position: absolute;
@@ -51,35 +51,43 @@ body {
   height: 5px;
   left: 0px;
 }
+
 .navigator .nav-icon:before {
   top: -10px;
 }
+
 .navigator .nav-icon:after {
   top: 10px;
 }
+
 .navigator.open {
   transform: translateX(250px) translateY(50px);
   -webkit-transform: translateX(250px) translateY(50px);
 }
+
 .navigator.open .nav-icon {
   background-color: transparent;
 }
+
 .navigator.open .nav-icon:before,
 .navigator.open .nav-icon:after {
   top: 0;
 }
+
 .navigator.open .nav-icon:before {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
+
 .navigator.open .nav-icon:after {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
 
 /* Nav Menu */
+
 nav {
-  background-color: #C70039;
+  background-color: #c70039;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -93,7 +101,7 @@ nav img {
 }
 
 
-nav #buttons {
+#buttons {
   width: 400px;
   height: 50px;
   vertical-align: top;
@@ -114,23 +122,23 @@ nav #buttons {
 }
 
 #buttons button:nth-child(1) {
-    background: DeepSkyBlue  ;
+    background: DeepSkyBlue;
 }
 
 #buttons button:nth-child(2) {
-    background: #06A817 ;
+    background: #06A817;
 }
 
 #buttons button:nth-child(3) {
-    background: #0921C9 ;
+    background: #0921C9;
 }
 
 #buttons button:nth-child(4) {
-    background: #9B0027 ;
+    background: #9B0027;
 }
 
 #buttons button:nth-child(5) {
-    background: #FFC100 ;
+    background: #FFC100;
 }
 
 .filter {
@@ -139,17 +147,21 @@ nav #buttons {
   height: 2em;
   margin: 25px 50px 25px 50px;
 }
+
 .filter option {
     text-align: center;
 }
+
 nav ul {
     height: 100%;
   width: 250px;
   overflow: auto;
 }
+
 nav ul:hover li {
   color: rgba(255, 255, 255, 0.5);
 }
+
 nav ul li {
   transition-duration: 0.25s;
   display: block;
@@ -160,12 +172,14 @@ nav ul li {
   text-align: left;
   border-bottom: 1px dashed;
 }
+
 nav ul li:hover {
   cursor: pointer;
   color: white;
 }
 
 /* Content + Map */
+
 .content {
   transition-duration: 0.5s;
   background-color: white;
@@ -174,23 +188,29 @@ nav ul li:hover {
   position: relative;
   overflow: hidden;
 }
+
 .content.open {
   transform: translateX(250px) translateY(50px);
   -webkit-transform: translateX(250px) translateY(50px);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
 }
-.content #map {
+
+#map {
   height: 100%;
   margin: 0 auto;
 }
 
+/* Swicth between filter buttons
+and dropdown depending on screen size*/
+
 @media (max-width: 850px) {
-    nav #buttons {
+    #buttons {
         display: none;
     }
 }
+
 @media (min-width: 849px) {
-    nav .filter {
+    .filter {
         display: none;
     }
 }

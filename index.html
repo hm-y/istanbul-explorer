@@ -1,12 +1,15 @@
 <!doctype HTML>
 <html>
+    <!-- Udacity FSND Part 4 Project: Istanbul Explorer
+         Last Update: January 19, 2018-->
     <head>
+        <!-- Page Icon & Title on tab -->
         <title>Istanbul Explorer</title>
         <link rel="shortcut icon" type="image/x-icon" href="img/kk.png" />
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1" />
-        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1"/>
+        <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
         <!-- Navigation -->
@@ -14,7 +17,7 @@
             <!-- Banner -->
             <img src="img/ie.png" alt="Istanbul Explorer">
 
-            <!-- Filter Buttons -->
+            <!-- Filter Buttons for wide screens-->
             <div id="buttons">
                 <button value="-1">All</button>
                 <button value="0">Historical</button>
@@ -23,7 +26,7 @@
                 <button value="3">Others</button>
             </div>
 
-            <!-- Filter DropDown Menu -->
+            <!-- Filter DropDown Menu for narrow screens -->
             <select class="filter">
                 <option value="-1">All</option>
                 <option value="0">Historical</option>
@@ -31,13 +34,14 @@
                 <option value="2">Shopping</option>
                 <option value="3">Others</option>
             </select>
+
+            <!-- List of places -->
             <ul data-bind="foreach: listing()">
                 <li data-bind="text: name, attr: { 'id': $index() }, click: see">Place Name</li>
             </ul>
-
-
         </nav>
 
+        <!-- Hamburger Icon -->
         <div class="navigator">
             <div class="nav-icon"></div>
         </div>
@@ -47,7 +51,7 @@
             <div id="map"></div>
         </div>
 
-        <!-- Link to libraries, APIs & my scripts -->
+        <!-- Link to jQuery, KnockOut, Google Maps & my script -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
