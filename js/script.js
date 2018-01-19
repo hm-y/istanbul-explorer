@@ -14,7 +14,6 @@ var places = ko.observableArray([
 ]);
 
 var categories = ["Historical", "Museum", "Shopping", "Others"];
-var newID = 9;
 
 
 // ----- Controller ----- //
@@ -35,14 +34,14 @@ $('.filter').change(function() {
     map = new initMap();
 });
 
-
-var addPlace = function(name, lat, lng, cat) {
-    var newOne = {id: newID, name: name, location: {lat: lat, lng: lng}, category: cat};
-    places.push(newOne);
-    addMarkerList(newOne);
-    putNewMarker();
-    newID++;
+var see = function (data, event){
+    openWindow(markers[event.target.id], data);
 };
+
+$('button').click(function() {
+    filter(this.value);
+    map = new initMap();
+});
 
 ko.applyBindings(listing());
 
@@ -58,7 +57,9 @@ $(".navigator").click(function() {
 
 // ----- View: Google Maps ----- //
 var map;
+var icon;
 var markers = [];
+var prevWin, infoWin;
 var styles = [
     {
         "featureType": "administrative",
@@ -258,30 +259,49 @@ var initMap = function() {
         styles: styles,
         disableDefaultUI: true
     });
-
+    markers = [];
     ko.utils.arrayForEach(listing(), function(place){
         addMarkerList(place);
     });
-
-    putMarkers();
-
 };
 
 var addMarkerList = function(place){
-    var marker = {
+    switch (place.category) {
+        case 0:
+            icon = "img/mhist.png";
+            break;
+        case 1:
+            icon = "img/mmus.png";
+            break;
+        case 2:
+            icon = "img/mshop.png";
+            break;
+        case 3:
+            icon = "img/moth.png";
+            break;
+    }
+    var markerData = {
         map: map,
+        icon: icon,
         position: place.location,
-        title: place.title
+        name: place.name
     };
+    var marker = new google.maps.Marker(markerData);
+
+    marker.addListener("click", function() {
+        openWindow(marker, markerData);
+    });
+
     markers.push(marker);
 };
 
-var putMarkers = function(){
-    $.each(markers, function(index, marker){
-        new google.maps.Marker(marker);
+var openWindow = function(marker, markerData){
+    if(infoWin)
+        prevWin = infoWin;
+    infoWin = new google.maps.InfoWindow({
+        content: markerData.name
     });
+    if (prevWin)
+        prevWin.close();
+    infoWin.open(map, marker);
 };
-
-var putNewMarker = function(){
-    new google.maps.Marker(markers[newID]);
-}

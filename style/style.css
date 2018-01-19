@@ -91,7 +91,9 @@ nav img {
   width: 400px;
   height: 50px;
 }
-.search {
+
+
+nav #buttons {
   width: 400px;
   height: 50px;
   vertical-align: top;
@@ -102,22 +104,33 @@ nav img {
   right: 0;
 }
 
-.search * {
-    height: 30px;
-    margin-top: 0;
+#buttons button {
+  height: 30px;
+  margin-top: 0;
+  display: inline-block;
+  width: 70px;
+  font-weight: bold;
+  color: white;
 }
 
-.search-input{
-    width: 50%;
+#buttons button:nth-child(1) {
+    background: DeepSkyBlue  ;
 }
 
-.search select {
-    width: 30%;
+#buttons button:nth-child(2) {
+    background: #06A817 ;
 }
 
-#add {
-    background-color: #14B9FF;
-    color: white;
+#buttons button:nth-child(3) {
+    background: #0921C9 ;
+}
+
+#buttons button:nth-child(4) {
+    background: #9B0027 ;
+}
+
+#buttons button:nth-child(5) {
+    background: #FFC100 ;
 }
 
 .filter {
@@ -172,38 +185,12 @@ nav ul li:hover {
 }
 
 @media (max-width: 850px) {
-    nav img {
-        display: block;
-        width: 300px;
+    nav #buttons {
+        display: none;
     }
-    .search {
-      width: 250px;
-      height: 100px;
-      float: none;
-      display: block;
-      position: relative;
-    }
-    .search-input {
-        height: 30px;
-        width: 100%;
-        margin-bottom: 15px;
-        display: block;
-    }
-
-    .search select {
-        width: 120px;
-    }
-
-    #add {
-        float: right;
-    }
-
-    .search select, #add {
-        height: 30px;
-        display: inline-block;
-    }
-
-    .filter {
-      margin: 10px 50px 10px 50px;
+}
+@media (min-width: 849px) {
+    nav .filter {
+        display: none;
     }
 }

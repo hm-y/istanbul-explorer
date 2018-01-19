@@ -14,31 +14,25 @@
             <!-- Banner -->
             <img src="img/ie.png" alt="Istanbul Explorer">
 
-            <!-- Search part -->
-            <div class="search">
-                <form>
-                <input class="search-input" type="text" name="new-place" value="Search a new place">
-                <!-- Search DropDown Menu -->
-                <select>
-                    <option value="historical">Historical</option>
-                    <option value="museum">Museum</option>
-                    <option value="food">Shopping</option>
-                    <option value="food">Others</option>
-                </select>
-                <input id="add" type="submit" value="   Add   ">
-                </form>
+            <!-- Filter Buttons -->
+            <div id="buttons">
+                <button value="-1">All</button>
+                <button value="0">Historical</button>
+                <button value="1">Museum</button>
+                <button value="2">Shopping</button>
+                <button value="3">Others</button>
             </div>
 
             <!-- Filter DropDown Menu -->
             <select class="filter">
-                <option value="-1">All categories</option>
+                <option value="-1">All</option>
                 <option value="0">Historical</option>
                 <option value="1">Museum</option>
                 <option value="2">Shopping</option>
                 <option value="3">Others</option>
             </select>
             <ul data-bind="foreach: listing()">
-                <li data-bind="text: name">Place Name</li>
+                <li data-bind="text: name, attr: { 'id': $index() }, click: see">Place Name</li>
             </ul>
 
 
