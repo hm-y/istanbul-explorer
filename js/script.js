@@ -44,7 +44,7 @@ var listing = ko.computed(function(){
 var filtering = function(data, event){
     filter(event.target.value);
     map = new initMap();
-}
+};
 
 // when a place is selected, show info
 var see = function (data, event){
@@ -331,7 +331,7 @@ var bounce = function(marker) {
     } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
-}
+};
 
 // ----- InfoWindow with Ajax: FourSquare ----- //
 var openWindow = function(marker, markerData){
