@@ -19,15 +19,15 @@
 
             <!-- Filter Buttons for wide screens-->
             <div id="buttons">
-                <button value="-1">All</button>
-                <button value="0">Historical</button>
-                <button value="1">Museum</button>
-                <button value="2">Shopping</button>
-                <button value="3">Others</button>
+                <button data-bind="click: filtering" value="-1">All</button>
+                <button data-bind="click: filtering" value="0">Historical</button>
+                <button data-bind="click: filtering" value="1">Museum</button>
+                <button data-bind="click: filtering" value="2">Shopping</button>
+                <button data-bind="click: filtering" value="3">Others</button>
             </div>
 
             <!-- Filter DropDown Menu for narrow screens -->
-            <select class="filter">
+            <select data-bind="click: filtering" class="filter">
                 <option value="-1">All</option>
                 <option value="0">Historical</option>
                 <option value="1">Museum</option>

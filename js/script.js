@@ -40,22 +40,16 @@ var listing = ko.computed(function(){
     }
 });
 
-// dropdown filter menu listener
-$(".filter").change(function() {
-    filter(this.value);
+// When filter applied
+var filtering = function(data, event){
+    filter(event.target.value);
     map = new initMap();
-});
+}
 
 // when a place is selected, show info
 var see = function (data, event){
     openWindow(markers[event.target.id], data);
 };
-
-// filter buttons' listener
-$("button").click(function() {
-    filter(this.value);
-    map = new initMap();
-});
 
 ko.applyBindings(listing());
 
