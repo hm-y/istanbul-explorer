@@ -11,8 +11,7 @@ The navigation menu can be shown or hidden.
   
 <img src="/img/ss1.png" width="400"> <img src="/img/ss3.png" width="400">  
   
-:star2: Depending on the screen size, the navigation has filtering buttons on the top right or filtering dropdown menu left menu.  
-The places can be filtered by clicking the buttons on wide screens or using the dropdown menu on narrow screens.  
+:star2: Depending on the screen size, the navigation has the filtering buttons on the top right or filtering dropdown menu left menu. The places can be filtered by clicking the buttons on wide screens or using the dropdown menu on narrow screens.  
   
 <img src="/img/ss5.png" height="300">  
   
