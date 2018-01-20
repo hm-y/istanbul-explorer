@@ -277,6 +277,7 @@ var styles = [
 ];
 
 // Initilize map with selected markers
+var html = "";
 var initMap = function() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: 41.025604, lng: 28.997002},
@@ -287,6 +288,9 @@ var initMap = function() {
     markers = [];
     ko.utils.arrayForEach(listing(), function(place){
         addMarkerList(place);
+    });
+    infoWin = new google.maps.InfoWindow({
+        content: html
     });
 };
 
@@ -343,7 +347,7 @@ var openWindow = function(marker, markerData){
         bounce(currentMarker);
     }
     currentMarker = marker;
-    
+
     // Close old InfoWindow when new selected
     if(infoWin) {
         prevWin = infoWin;
@@ -365,20 +369,16 @@ var openWindow = function(marker, markerData){
             photo_src(photo.prefix + "200x200" + photo.suffix);
         }
     }).done(function(){
-        var html = "<h3>" + markerData.name + "</h3>" +
+        html = "<h3>" + markerData.name + "</h3>" +
             "<img src=\"" + photo_src() + "\">";
 
-        infoWin = new google.maps.InfoWindow({
-            content: html
-        });
+        infoWin.setContent(html);
         infoWin.open(map, marker);
     }).fail(function(){
-        var html = "<h3>" + markerData.name + "</h3>" +
+        html = "<h3>" + markerData.name + "</h3>" +
             "<p>Sorry, The image couldn't be loaded.</p>";
 
-        infoWin = new google.maps.InfoWindow({
-            content: html
-        });
+        infoWin.setContent(html);
         infoWin.open(map, marker);
     });
 };
