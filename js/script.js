@@ -79,6 +79,7 @@ var mapfail = function(){
 // ----- View: Google Maps ----- //
 var map;
 var icon;
+var currentMarker;
 var markers = [];
 var prevWin, infoWin;
 
@@ -309,6 +310,7 @@ var addMarkerList = function(place){
     var markerData = {
         map: map,
         icon: icon,
+        animation: google.maps.Animation.DROP,
         venue: place.venue,
         position: place.location,
         name: place.name
@@ -317,20 +319,38 @@ var addMarkerList = function(place){
     var marker = new google.maps.Marker(markerData);
 
     marker.addListener("click", function() {
+        bounce(marker);
         openWindow(marker, markerData);
     });
 
     markers.push(marker);
 };
 
+// Toggle marker bouncing
+var bounce = function(marker) {
+    if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+    } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+}
+
 // ----- InfoWindow with Ajax: FourSquare ----- //
 var openWindow = function(marker, markerData){
 
+    // Stop previous marker bouncing
+    if (currentMarker) {
+        bounce(currentMarker);
+    }
+    currentMarker = marker;
+    
     // Close old InfoWindow when new selected
-    if(infoWin)
+    if(infoWin) {
         prevWin = infoWin;
-    if (prevWin)
+    }
+    if (prevWin){
         prevWin.close();
+    }
 
     // Retrieve data from FourSquare and create InfoWindow
     var address = "https://api.foursquare.com/v2/venues/" + markerData.venue +
