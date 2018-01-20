@@ -1,6 +1,6 @@
 # istanbul-explorer
 
-## :thought_balloon: Overview
+## :key: Overview
 
   Istanbul Explorer is a single page application featuring a map of the outstanding places of Istanbul. It features the location pins of the places on the map and their pictures retrieved from a 3rd party resource. It has been built as the project for "Udacity Full Stack Nanodegree Part 4".
 
@@ -22,12 +22,19 @@ The places can be filtered by clicking the buttons on wide screens or using the 
   
 ## :earth_americas: How to run  
   
-- Fork or download the project  
-- Replace the Google Maps Api key with your own in the `index.html`
-- Replace the Foursquare `client_id` and `client_secret` with your own ones in the `js/script.js`
-- All data of the places, categories and the map can be modified in `js/script.js`
-- Run `index.html` :blush:
-
-## :hammer: Built with
+:heavy_check_mark: Fork or download the project  
+:heavy_check_mark: Replace the Google Maps Api key with your own in the `index.html`  
+:heavy_check_mark: Replace the Foursquare `client_id` and `client_secret` with your own ones in the `js/script.js`  
+:heavy_check_mark: All data of the places, categories and the map can be modified in `js/script.js`  
+:heavy_check_mark: Run `index.html` :blush:  
+  
+## :hammer: Built with  
+  
+:pushpin: HTML/CSS/JavaScript  
+:pushpin: jQuery  
+:pushpin: AJAX  
+:pushpin: KnockooutJS  
+:pushpin: Google Maps API  
+:pushpin: Foursquare API  
 
 ## :trophy: Acknowledgements
