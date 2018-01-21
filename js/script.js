@@ -48,6 +48,7 @@ var filtering = function(data, event){
 
 // when a place is selected, show info
 var see = function (data, event){
+    bounce(markers[event.target.id]);
     openWindow(markers[event.target.id], data);
 };
 
@@ -326,19 +327,15 @@ var addMarkerList = function(place){
 
 // Toggle marker bouncing
 var bounce = function(marker) {
-    if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-    } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
+    marker.setAnimation(google.maps.Animation.BOUNCE);
 };
 
 // ----- InfoWindow with Ajax: FourSquare ----- //
 var openWindow = function(marker, markerData){
 
     // Stop previous marker bouncing
-    if (currentMarker) {
-        bounce(currentMarker);
+    if (currentMarker && currentMarker != marker) {
+        currentMarker.setAnimation(null);
     }
     currentMarker = marker;
 
@@ -368,11 +365,18 @@ var openWindow = function(marker, markerData){
 
         infoWin.setContent(html);
         infoWin.open(map, marker);
+
+        google.maps.event.addListener(infoWin, 'closeclick', function() {
+            marker.setAnimation(null);
+        });
     }).fail(function(){
         html = "<h3>" + markerData.name + "</h3>" +
             "<p>Sorry, The image couldn't be loaded.</p>";
 
         infoWin.setContent(html);
         infoWin.open(map, marker);
+        google.maps.event.addListener(infoWin, 'closeclick', function() {
+            marker.setAnimation(null);
+        });
     });
 };
