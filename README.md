@@ -32,7 +32,7 @@ The navigation menu can be shown or hidden.
 :pushpin: HTML/CSS/JavaScript  
 :pushpin: jQuery  
 :pushpin: AJAX  
-:pushpin: KnockooutJS  
+:pushpin: KnockoutJS  
 :pushpin: Google Maps API  
 :pushpin: Foursquare API  
 
