@@ -41,5 +41,4 @@ The navigation menu can be shown or hidden.
 :gem: The navigation menu is modified from [Material Design by MIT](https://www.jqueryscript.net/menu/Material-Design-Inspired-Reveal-Navigation-with-jQuery-CSS3.html)  
 :gem: Google Maps style is modified from [Julyinfo](https://snazzymaps.com/style/128056/%E5%82%91%E7%AB%8B%E8%B3%87%E8%A8%8A-julyinfo)  
 :gem: Map markers are designed on [FlatIcon](https://www.flaticon.com/)  
-  
-:gem: Special thanks to Udacity teachers, mentors and the reviewer :smirk:
+
